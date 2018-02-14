@@ -9,38 +9,10 @@ import { Platform, StyleSheet, Text, View, Button } from 'react-native';
 
 type Props = {};
 
-class ToggleText extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    display = this.props.isShowing ? this.props.text : '';
-    return <Text>{display}</Text>;
-  }
-}
-
 export default class App extends Component<Props> {
   constructor(props) {
     super(props);
-    this.state = { isShowingHello: false, isShowingWorld: false };
   }
-
-  toggleSwitch = param => {
-    this.setState(previousState => {
-      console.log(previousState);
-      return { [param]: !previousState[param] };
-    });
-  };
-
-  renderTextFields = () => {
-    return (
-      <View>
-        <ToggleText isShowing={this.state.isShowingHello} text="Hello!!!" />
-        <ToggleText isShowing={this.state.isShowingWorld} text="World!!!" />
-      </View>
-    );
-  };
 
   render() {
     return (
@@ -49,19 +21,10 @@ export default class App extends Component<Props> {
         <Text style={styles.instructions}>
           This is a React Native snapshot test.
         </Text>
-        <Button
-          onPress={() => this.toggleSwitch('isShowingHello')}
-          title="Say Hello"
-          color="#814584"
-          testID="hello_button"
-        />
-        <Button
-          onPress={() => this.toggleSwitch('isShowingWorld')}
-          title="To The World"
-          color="#814584"
-          testID="world_button"
-        />
-        {this.renderTextFields()}
+        <Button title="Say Hello" color="#814584" testID="hello_button" />
+        <Button title="To The World" color="#814584" testID="world_button" />
+        <Text>Hello!!!</Text>
+        <Text>World!!!</Text>
       </View>
     );
   }
